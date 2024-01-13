@@ -11,14 +11,22 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@mojs/core": "^1.7.1",
+    "@react-three/fiber": "^8.15.13",
     "@stylexjs/stylex": "^0.4.1",
-    "next": "14.0.4",
+    "mo-js": "^0.288.2",
+    "next": "^14.0.4",
     "react": "^18",
     "react-animated-cursor": "^2.11.2",
     "react-dom": "^18",
-    "styled-components": "^6.1.8"
+    "react-icons": "^5.0.1",
+    "styled-components": "^6.1.8",
+    "three": "^0.160.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@babel/preset-react": "^7.23.3",
     "@storybook/addon-essentials": "^7.6.7",
     "@storybook/addon-interactions": "^7.6.7",
     "@storybook/addon-links": "^7.6.7",
@@ -33,6 +41,7 @@
     "@types/react-dom": "^18",
     "@types/styled-components": "^5.1.34",
     "autoprefixer": "^10.0.1",
+    "babel-eslint": "^10.1.0",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-plugin-storybook": "^0.6.15",

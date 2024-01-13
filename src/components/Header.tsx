@@ -1,35 +1,21 @@
-"use client";
-
-import { Button } from "@/components/button/Button";
-import madcamp from "/public/madcamp.png";
-import Image from "next/image";
 import React from "react";
-import styled from "styled-components";
+
+import { FiAlignRight } from "react-icons/fi";
 
 export default function Header() {
-  const onClick = () => {
-    console.log(1);
-  };
-
   return (
-    <FixedHeader>
-      <Image src={madcamp} alt="" width={100} height={100} />
-      <div>
-        <Button label="1" onClick={onClick} />
-        <Button label="1" onClick={onClick} />
-        <Button label="1" onClick={onClick} />
-        <Button label="1" onClick={onClick} />
+    <header className="flex justify-between">
+      <div>ㅁㅇㅋㅍ</div>
+
+      <div className="flex justify-center items-center text-center">
+        <button>지원하기</button>
+        <button>지원하기</button>
+        <button>지원하기</button>
+        <button>지원하기</button>
+        <button>
+          <FiAlignRight size={50} />
+        </button>
       </div>
-    </FixedHeader>
+    </header>
   );
 }
-
-const FixedHeader = styled.header`
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 10vh;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-`;

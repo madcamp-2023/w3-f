@@ -1,10 +1,12 @@
 import AnimatedCursor from "react-animated-cursor";
+import HomePage from "./home/page";
+import Header from "@/components/Header";
 
 export default function Home() {
   return (
     <main>
       <AnimatedCursor
-        innerSize={20}
+        innerSize={10}
         outerSize={50}
         color="0, 0, 0"
         outerAlpha={0.1}
@@ -24,6 +26,8 @@ export default function Home() {
           ".link",
         ]}
       />
+      <Header />
+      <HomePage />
     </main>
   );
 }
