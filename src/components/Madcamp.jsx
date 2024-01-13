@@ -1,13 +1,10 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import styled from "styled-components";
-
+import { useEffect, useRef } from "react";
 import Isometrizer from "@/utils/isometrizer";
 
-export default function HomePage() {
+export default function Madcamp() {
   const isometrizerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -64,11 +61,6 @@ export default function HomePage() {
             .append(controls.rotateChildH);
 
           timeline.play();
-          // Delay visibility of the image
-          setTimeout(() => {
-            setIsVisible(true); // Set container to be visible after 1 second
-          }, 1000);
-
           isometrizerRef.current.isometrizerInstance = isometrizer;
         }
       });
@@ -98,18 +90,3 @@ export default function HomePage() {
     </section>
   );
 }
-
-const Container = styled.section`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-`;
-
-const MapImage = styled.div`
-  img {
-    width: 100%;
-    height: auto;
-  }
-`;

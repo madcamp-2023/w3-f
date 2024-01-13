@@ -87,3 +87,44 @@ body {
   color: #fccb5f;
   background: #ea364e;
 }
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.sliding-in {
+  animation: slideInFromRight 2s forwards;
+}
+
+.sliding-out {
+  animation: slideOutToRight 2s forwards;
+}
+
+.fullPage {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+.container {
+  height: 300vh; /* This should be 100vh * number of pages */
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+}

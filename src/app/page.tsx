@@ -1,6 +1,5 @@
 import AnimatedCursor from "react-animated-cursor";
-import HomePage from "./home/page";
-import Header from "@/components/Header";
+import HomePage from "@/app/main/page";
 
 export default function Home() {
   return (
@@ -26,7 +25,6 @@ export default function Home() {
           ".link",
         ]}
       />
-      <Header />
       <HomePage />
     </main>
   );
