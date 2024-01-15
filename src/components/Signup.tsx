@@ -9,6 +9,7 @@ import LoginModal from "./LoginModal";
 import { IoMdPerson } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { MdOutlinePassword } from "react-icons/md";
 import { MdOutlinePermIdentity } from "react-icons/md";
 
 interface SignupProps {
@@ -17,31 +18,47 @@ interface SignupProps {
   openLoginModal: () => void;
 }
 
+async function postUser({
+  name,
+  userId,
+  password,
+  code,
+}: {
+  name: string;
+  userId: string;
+  password: string;
+  code: string;
+}) {
+  try {
+    await axios.post(URL + "/user", {
+      name: name,
+      userId: userId,
+      password: password,
+      code: code,
+    });
+  } catch (e: any) {
+    console.log(e);
+  }
+}
+
 export default function Signup({
   isModalOpen,
   setIsModalOpen,
   openLoginModal,
 }: SignupProps) {
   const [name, setName] = useState("");
-  const [id, setId] = useState("");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
   const [code, setCode] = useState("");
 
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    //TODO : TEST POST USER (Signup)
-    // try {
-    //   await axios
-    //     .post(URL + "/user", {
-    //       name: name,
-    //       email: email,
-    //       password: password,
-    //       code: code,
-    //     })
-    //     .then((response) => console.log(response.data));
-    // } catch (e: any) {
-    //   console.log(e);
-    // }
+    postUser({ name, userId, password, code });
+    setName("");
+    setUserId("");
+    setPassword("");
+    setCode("");
   };
 
   const openModal = () => {
@@ -56,9 +73,7 @@ export default function Signup({
     <>
       <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
         <div className="flex flex-row h-full  ">
-          <img src={MADCAMP} alt="1" className="w-1/2 rounded-3xl" />
-
-          <div className="flex flex-col justify-center items-center p-4  w-1/2">
+          <div className="flex flex-col justify-center items-center p-4 w-full">
             <div className="flex w-full justify-end items-center">
               <button onClick={closeModal}>
                 <IoIosCloseCircle size={30} />
@@ -80,8 +95,16 @@ export default function Signup({
                 text="ID"
                 type="id"
                 id="id"
-                value={id}
-                onChange={setId}
+                value={userId}
+                onChange={setUserId}
+              />
+              <InputForm
+                icon={<MdOutlinePassword />}
+                text="password"
+                type="password"
+                id="password"
+                value={password}
+                onChange={setPassword}
               />
               <InputForm
                 icon={<FaLock />}
@@ -91,6 +114,7 @@ export default function Signup({
                 value={code}
                 onChange={setCode}
               />
+
               <button
                 type="submit"
                 className="w-60 bg-black text-white p-2 m-2 rounded-md"

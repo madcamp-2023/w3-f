@@ -1,10 +1,12 @@
-import HomePage from "@/app/main/page";
-import Login from "@/components/Login";
+import Layout from "@/components/Layout";
+import Main from "@/components/Main";
 
 export default function Home() {
   return (
     <main>
-      <HomePage />
+      <Layout>
+        <Main />
+      </Layout>
     </main>
   );
 }

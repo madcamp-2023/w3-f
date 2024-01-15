@@ -7,7 +7,6 @@ import InputForm from "./InputForm";
 import LoginModal from "./LoginModal";
 import { IoMdPerson } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
-import { MdOutlinePermIdentity } from "react-icons/md";
 import { IoIosCloseCircle } from "react-icons/io";
 
 interface LoginProps {
@@ -16,33 +15,41 @@ interface LoginProps {
   openSignupModal: () => void;
 }
 
+async function getUser({
+  userId,
+  password,
+}: {
+  userId: string;
+  password: string;
+}) {
+  try {
+    const response = await axios
+      .get(URL + "/user", {
+        params: { userId, password },
+      })
+      .then((response) => response.data);
+
+    return response;
+  } catch (e: any) {
+    console.log(e);
+  }
+}
+
 export default function Login({
   isModalOpen,
   setIsModalOpen,
   openSignupModal,
 }: LoginProps) {
-  const [name, setName] = useState("");
-  const [id, setId] = useState("");
-  const [code, setCode] = useState("");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    //TODO : TEST GEt USER (Login)
-    // try {
-    //   await axios
-    //     .get(URL + "/user", {
-    //       email: email,
-    //       password: password,
-    //     })
-    //     .then((response) => console.log(response.data));
-    // } catch (e: any) {
-    //   console.log(e);
-    // }
-
-    setId("");
-    setName("");
-    setCode("");
+    //TODO : TEST GET USER (Login)
+    getUser({ userId, password });
+    setUserId("");
+    setPassword("");
   };
 
   const openModal = () => {
@@ -57,9 +64,7 @@ export default function Login({
     <>
       <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
         <div className="flex flex-row h-full ">
-          <img src={MADCAMP} alt="1" className="w-1/2 rounded-3xl" />
-
-          <div className="flex flex-col justify-center items-center p-4  w-1/2">
+          <div className="flex flex-col justify-center items-center p-4 w-full">
             <div className="flex w-full justify-end items-center">
               <button onClick={closeModal}>
                 <IoIosCloseCircle size={30} />
@@ -69,28 +74,20 @@ export default function Login({
 
             <form onSubmit={handleSubmit}>
               <InputForm
-                icon={<MdOutlinePermIdentity />}
-                text="Name"
-                type="text"
-                id="name"
-                value={name}
-                onChange={setName}
-              />
-              <InputForm
                 icon={<IoMdPerson />}
                 text="ID"
                 type="id"
                 id="id"
-                value={id}
-                onChange={setId}
+                value={userId}
+                onChange={setUserId}
               />
               <InputForm
                 icon={<FaLock />}
-                text="Verification code"
-                type="text"
-                id="code"
-                value={code}
-                onChange={setCode}
+                text="password"
+                type="password"
+                id="password"
+                value={password}
+                onChange={setPassword}
               />
               <button
                 type="submit"
