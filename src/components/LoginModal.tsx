@@ -23,7 +23,7 @@ export default function LoginModal({
       left: "0",
     },
     content: {
-      width: "50vw",
+      width: "25vw",
       height: "50vh",
       zIndex: "150",
       position: "absolute",

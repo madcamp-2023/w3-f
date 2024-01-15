@@ -5,7 +5,7 @@ export default function Introduce() {
 
   return (
     <div
-      className="flex flex-col justify-center md:flex-row items-center"
+      className="flex flex-col justify-center md:flex-row items-center bg-black"
       style={{ height: "90vh" }}
     >
       <iframe

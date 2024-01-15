@@ -23,15 +23,11 @@ const Button = ({
 export default function Header({ handleMenu }: { handleMenu: () => void }) {
   const router = useRouter();
 
-  useEffect(() => {
-    const getTest = async () => {
-      await axios.get(URL + "/").then((response) => console.log(response.data));
-    };
-  }, []);
-
   return (
-    <header className="fixed top-0 left-0 right-0 flex justify-between text-xl p-4 md:text-2xl bg-white z-10">
-      <div className="">ㅁㅇㅋㅍ</div>
+    <header className="fixed top-0 left-0 right-0 flex justify-between text-xl ml-12 mr-12 mb-8 mt-8 md:text-2xl bg-white z-10">
+      <div onClick={() => router.push("/")} className="">
+        ㅁㅇㅋㅍ
+      </div>
       <menu className="flex flex-row">
         <nav className="hidden md:flex">
           <Button onClick={() => router.push("/notice")}>게시판</Button>
