@@ -1,13 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
-import { URL } from "@/utils/constants";
+import { MADCAMP, URL } from "@/utils/constants";
+import InputForm from "./InputForm";
+import LoginModal from "./LoginModal";
+import { IoMdPerson } from "react-icons/io";
+import { FaLock } from "react-icons/fa";
+import { MdOutlinePermIdentity } from "react-icons/md";
+import { IoIosCloseCircle } from "react-icons/io";
 
-export default function Login() {
+interface LoginProps {
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  openSignupModal: () => void;
+}
+
+export default function Login({
+  isModalOpen,
+  setIsModalOpen,
+  openSignupModal,
+}: LoginProps) {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPasswrod] = useState("");
+  const [id, setId] = useState("");
+  const [code, setCode] = useState("");
 
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,7 +32,6 @@ export default function Login() {
     // try {
     //   await axios
     //     .get(URL + "/user", {
-    //       name: name,
     //       email: email,
     //       password: password,
     //     })
@@ -24,39 +39,76 @@ export default function Login() {
     // } catch (e: any) {
     //   console.log(e);
     // }
+
+    setId("");
+    setName("");
+    setCode("");
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">이름:</label>
-        <input
-          type="name"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">이메일:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">비밀번호:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPasswrod(e.target.value)}
-        />
-      </div>
+    <>
+      <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        <div className="flex flex-row h-full ">
+          <img src={MADCAMP} alt="1" className="w-1/2 rounded-3xl" />
 
-      <button type="submit">로그인</button>
-    </form>
+          <div className="flex flex-col justify-center items-center p-4  w-1/2">
+            <div className="flex w-full justify-end items-center">
+              <button onClick={closeModal}>
+                <IoIosCloseCircle size={30} />
+              </button>
+            </div>
+            <h1 className="text-2xl p-4 font-bold">User Login</h1>
+
+            <form onSubmit={handleSubmit}>
+              <InputForm
+                icon={<MdOutlinePermIdentity />}
+                text="Name"
+                type="text"
+                id="name"
+                value={name}
+                onChange={setName}
+              />
+              <InputForm
+                icon={<IoMdPerson />}
+                text="ID"
+                type="id"
+                id="id"
+                value={id}
+                onChange={setId}
+              />
+              <InputForm
+                icon={<FaLock />}
+                text="Verification code"
+                type="text"
+                id="code"
+                value={code}
+                onChange={setCode}
+              />
+              <button
+                type="submit"
+                className="w-60 bg-black text-white p-2 m-2 rounded-md"
+              >
+                로그인
+              </button>
+            </form>
+            <button
+              className="mt-auto hover:font-bold text-sm"
+              onClick={openSignupModal}
+            >
+              Create Your Account
+            </button>
+          </div>
+        </div>
+      </LoginModal>
+      <button onClick={openModal}>버튼</button>
+    </>
   );
 }

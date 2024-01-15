@@ -1,13 +1,29 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
-import { URL } from "@/utils/constants";
+import { MADCAMP, URL } from "@/utils/constants";
+import InputForm from "./InputForm";
+import LoginModal from "./LoginModal";
 
-export default function Signup() {
+import { IoMdPerson } from "react-icons/io";
+import { FaLock } from "react-icons/fa";
+import { IoIosCloseCircle } from "react-icons/io";
+import { MdOutlinePermIdentity } from "react-icons/md";
+
+interface SignupProps {
+  isModalOpen: boolean;
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>;
+  openLoginModal: () => void;
+}
+
+export default function Signup({
+  isModalOpen,
+  setIsModalOpen,
+  openLoginModal,
+}: SignupProps) {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPasswrod] = useState("");
+  const [id, setId] = useState("");
   const [code, setCode] = useState("");
 
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
@@ -28,45 +44,70 @@ export default function Signup() {
     // }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="name">이름:</label>
-        <input
-          type="name"
-          id="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="email">이메일:</label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="password">비밀번호:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPasswrod(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="code">코드:</label>
-        <input
-          type="code"
-          id="code"
-          value={code}
-          onChange={(e) => setCode(e.target.value)}
-        />
-      </div>
-      <button type="submit">가입하기</button>
-    </form>
+    <>
+      <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        <div className="flex flex-row h-full  ">
+          <img src={MADCAMP} alt="1" className="w-1/2 rounded-3xl" />
+
+          <div className="flex flex-col justify-center items-center p-4  w-1/2">
+            <div className="flex w-full justify-end items-center">
+              <button onClick={closeModal}>
+                <IoIosCloseCircle size={30} />
+              </button>
+            </div>
+            <h1 className="text-2xl p-4 font-bold">User Signup</h1>
+
+            <form onSubmit={handleSubmit}>
+              <InputForm
+                icon={<MdOutlinePermIdentity />}
+                text="Name"
+                type="text"
+                id="name"
+                value={name}
+                onChange={setName}
+              />
+              <InputForm
+                icon={<IoMdPerson />}
+                text="ID"
+                type="id"
+                id="id"
+                value={id}
+                onChange={setId}
+              />
+              <InputForm
+                icon={<FaLock />}
+                text="Verification code"
+                type="text"
+                id="code"
+                value={code}
+                onChange={setCode}
+              />
+              <button
+                type="submit"
+                className="w-60 bg-black text-white p-2 m-2 rounded-md"
+              >
+                회원가입
+              </button>
+            </form>
+            <button
+              className="mt-auto hover:font-bold text-sm"
+              onClick={openLoginModal}
+            >
+              Already have an account? Login here
+            </button>
+          </div>
+        </div>
+      </LoginModal>
+      <button onClick={openModal}>버튼</button>
+    </>
   );
 }

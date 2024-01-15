@@ -14,6 +14,7 @@
     "@mojs/core": "^1.7.1",
     "@react-three/fiber": "^8.15.13",
     "@stylexjs/stylex": "^0.4.1",
+    "@types/react-modal": "^3.16.3",
     "axios": "^1.6.5",
     "mo-js": "^0.288.2",
     "next": "^14.0.4",
@@ -21,6 +22,7 @@
     "react-animated-cursor": "^2.11.2",
     "react-dom": "^18",
     "react-icons": "^5.0.1",
+    "react-modal": "^3.16.1",
     "styled-components": "^6.1.8",
     "three": "^0.160.0"
   },
