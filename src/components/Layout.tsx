@@ -30,7 +30,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <main>
-      <Header handleMenu={handleMenu} />
+      <Header />
       <div>
         {isIntroduceVisible && (
           <div
