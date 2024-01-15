@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { FiAlignRight } from "react-icons/fi";
-import axios from "axios";
-import { URL } from "@/utils/constants";
+import React, { useState } from "react";
+
 import { useRouter } from "next/navigation";
+import Login from "./Login";
+import Signup from "./Signup";
 
 const Button = ({
   children,
@@ -20,23 +20,42 @@ const Button = ({
   );
 };
 
-export default function Header({ handleMenu }: { handleMenu: () => void }) {
+export default function Header() {
   const router = useRouter();
 
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+
+  const openLoginModal = () => {
+    setIsSignupModalOpen(false);
+    setIsLoginModalOpen(true);
+  };
+
+  const openSignupModal = () => {
+    setIsLoginModalOpen(false);
+    setIsSignupModalOpen(true);
+  };
+
   return (
-    <header className="fixed top-0 left-0 right-0 flex justify-between text-xl ml-12 mr-12 mb-8 mt-8 md:text-2xl bg-white z-10">
+    <header className="fixed top-0 left-0 right-0 flex justify-between text-xl pl-12 pr-12 pb-8 pt-8 md:text-2xl bg-white z-10">
       <div onClick={() => router.push("/")} className="">
         ㅁㅇㅋㅍ
       </div>
       <menu className="flex flex-row">
         <nav className="hidden md:flex">
-          <Button onClick={() => router.push("/notice")}>게시판</Button>
-          <Button onClick={() => router.push("/review")}>후기</Button>
+          <Button onClick={() => router.push("/introduce")}>소개</Button>
           <Button onClick={() => router.push("/apply")}>지원하기</Button>
         </nav>
-        <button onClick={handleMenu}>
-          <FiAlignRight size={30} />
-        </button>
+        <Login
+          isModalOpen={isLoginModalOpen}
+          setIsModalOpen={setIsLoginModalOpen}
+          openSignupModal={openSignupModal}
+        />
+        <Signup
+          isModalOpen={isSignupModalOpen}
+          setIsModalOpen={setIsSignupModalOpen}
+          openLoginModal={openLoginModal}
+        />
       </menu>
     </header>
   );

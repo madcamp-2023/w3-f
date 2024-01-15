@@ -68,25 +68,27 @@ export default function Madcamp() {
   }, []);
 
   return (
-    <section className="iso-map-wrapper">
-      <div id="isometrizer" ref={isometrizerRef}>
-        <div
-          className="map-wrapper"
-          iso-side-background="#000"
-          iso-top-background="#F1EEE5"
-        >
-          <div className="map-image">
-            <img
-              src={
-                "https://github.com/madcamp-2023/w3-f/assets/99087502/a7dfc0d8-a7f8-4dac-84da-ec181132e740"
-              }
-              alt="Madcamp"
-              width={500}
-              height={500}
-            />
+    <div style={{ height: "90vh" }}>
+      <section className="iso-map-wrapper">
+        <div id="isometrizer" ref={isometrizerRef}>
+          <div
+            className="map-wrapper"
+            iso-side-background="#000"
+            iso-top-background="#F1EEE5"
+          >
+            <div className="map-image">
+              <img
+                src={
+                  "https://github.com/madcamp-2023/w3-f/assets/99087502/a7dfc0d8-a7f8-4dac-84da-ec181132e740"
+                }
+                alt="Madcamp"
+                width={500}
+                height={500}
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }

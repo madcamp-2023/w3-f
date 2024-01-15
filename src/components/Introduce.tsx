@@ -21,13 +21,13 @@ export default function Introduce() {
         <div className="flex justify-center">강사진</div>
         <div className="flex flex-row">
           <img src={MADCAMP} alt="1" className="w-10 h-10 rounded-3xl" />
-          <div className="flex flex-col">
+          <div className="flex flex-col text-white">
             {JanginfoList.map((info, index) => (
               <div key={index}>{info}</div>
             ))}
           </div>
         </div>
-        <div className="flex flex-row">
+        <div className="flex flex-row text-white">
           <img src={MADCAMP} alt="1" className="w-10 h-10 rounded-3xl" />
           <div className="flex flex-col">
             {RueinfoList.map((info, index) => (

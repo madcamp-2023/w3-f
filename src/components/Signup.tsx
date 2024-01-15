@@ -2,7 +2,7 @@
 
 import React, { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
-import { MADCAMP, URL } from "@/utils/constants";
+import { URL } from "@/utils/constants";
 import InputForm from "./InputForm";
 import LoginModal from "./LoginModal";
 
@@ -131,7 +131,6 @@ export default function Signup({
           </div>
         </div>
       </LoginModal>
-      <button onClick={openModal}>버튼</button>
     </>
   );
 }

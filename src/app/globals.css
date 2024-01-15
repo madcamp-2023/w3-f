@@ -88,30 +88,30 @@ body {
   background: #ea364e;
 }
 
-@keyframes slideInFromRight {
+@keyframes slideInFromUp {
   from {
-    transform: translateX(100%);
+    transform: translateY(100%);
   }
   to {
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes slideOutToRight {
+@keyframes slideOutFromDown {
   from {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   to {
-    transform: translateX(100%);
+    transform: translateY(100%);
   }
 }
 
-.sliding-in {
-  animation: slideInFromRight 2s forwards;
+.sliding-up {
+  animation: slideOutFromDown 2s forwards;
 }
 
-.sliding-out {
-  animation: slideOutToRight 2s forwards;
+.sliding-down {
+  animation: slideInFromUp 2s forwards;
 }
 
 .fullPage {

@@ -8,6 +8,7 @@ import LoginModal from "./LoginModal";
 import { IoMdPerson } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
+import { IoPersonCircle } from "react-icons/io5";
 
 interface LoginProps {
   isModalOpen: boolean;
@@ -105,7 +106,9 @@ export default function Login({
           </div>
         </div>
       </LoginModal>
-      <button onClick={openModal}>버튼</button>
+      <button onClick={openModal}>
+        <IoPersonCircle size={30} />
+      </button>
     </>
   );
 }
