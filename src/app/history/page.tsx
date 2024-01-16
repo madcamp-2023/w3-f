@@ -8,7 +8,23 @@ const Item = ({ content }: { content: string[] }) => {
       <div className="mr-5">
         {content.map((item, index) => {
           return (
-            <div key={index} className="block pt-4 text-base">
+            <div key={index} className="block pt-4 text-base w-full text-start">
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const Item2 = ({ content }: { content: string[] }) => {
+  return (
+    <div className="flex flex-row">
+      <div className="mr-5">
+        {content.map((item, index) => {
+          return (
+            <div key={index} className="block pt-2 text-base w-full text-end">
               {item}
             </div>
           );
@@ -66,10 +82,10 @@ export default function History() {
     <Layout>
       <div className="flex flex-col h-9/10">
         <div className="flex flex-row justify-center items-center h-full p-6">
-          <div className="flex-1 flex justify-center items-center border-r-4 border-black">
+          <div className="flex-1 flex justify-center items-center">
             <Image src={JBJ} alt="1" className="" />
           </div>
-          <div className="flex-1 flex justify-center items-center">
+          <div className="flex-1 flex justify-center items-center border-l-4 border-black">
             {applicationItemList.map((item, index) => (
               <Item content={item.content} key={index} />
             ))}
@@ -78,7 +94,7 @@ export default function History() {
         <div className="flex flex-row justify-center items-center h-full p-6">
           <div className="flex-1 flex justify-center items-center border-r-4 border-black">
             {applicationItemList1.map((item, index) => (
-              <Item content={item.content} key={index} />
+              <Item2 content={item.content} key={index} />
             ))}
           </div>
           <div className="flex-1 flex justify-center items-center">
@@ -86,42 +102,16 @@ export default function History() {
           </div>
         </div>
         <div className="flex flex-row justify-center items-center h-full p-6">
-          <div className="flex-1 flex justify-center items-center border-r-4 border-black">
+          <div className="flex-1 flex justify-center items-center">
             <Image src={JBJ} alt="1" className="" />
           </div>
-          <div className="flex-1 flex justify-center items-center">
-            {applicationItemList2.map((item, index) => (
+          <div className="flex-1 flex justify-center items-center border-l-4 border-black">
+            {applicationItemList.map((item, index) => (
               <Item content={item.content} key={index} />
             ))}
           </div>
         </div>
       </div>
-      {/* <div className="flex flex-col justify-center items-center w-full h-full">
-        <div className="flex flex-row bg-red-900 w-full justify-center items-center basis-1/3">
-          <Image src={JBJ} alt="1" />
-          <div className="flex flex-col pl-12 w-full">
-            {applicationItemList.map((item, index) => (
-              <Item content={item.content} key={index} />
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-row bg-red-900 w-full justify-center basis-1/3">
-          <Image src={JBJ} alt="1" />
-          <div className="flex flex-col pl-12 w-full">
-            {applicationItemList.map((item, index) => (
-              <Item content={item.content} key={index} />
-            ))}
-          </div>
-        </div>
-        <div className="flex flex-row bg-red-900 w-full justify-center basis-1/3">
-          <Image src={JBJ} alt="1" />
-          <div className="flex flex-col pl-12 w-full">
-            {applicationItemList.map((item, index) => (
-              <Item content={item.content} key={index} />
-            ))}
-          </div>
-        </div>
-      </div> */}
     </Layout>
   );
 }

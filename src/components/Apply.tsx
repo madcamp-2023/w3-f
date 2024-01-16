@@ -23,7 +23,7 @@ const Item2 = ({ content }: { content: string[] }) => {
       <div className="mr-5">
         {content.map((item, index) => {
           return (
-            <div key={index} className="block pt-4 text-base">
+            <div key={index} className="block pt-4 text-lg">
               {item}
             </div>
           );
@@ -115,8 +115,6 @@ Internet Explorer에서 강의계획서 및 지원서가 열리지 않을 경우
     },
   ];
 
-  const onClick = () => {};
-
   return (
     <div className="flex flex-col">
       <div className="flex flex-row" style={{ height: "90vh" }}>
@@ -146,7 +144,7 @@ Internet Explorer에서 강의계획서 및 지원서가 열리지 않을 경우
             </div>
             <button className="flex justify-end items-center h-20 mt-10 mb-16">
               <a href="https://docs.google.com/forms/d/e/1FAIpQLSc15O2RuDEDms58RhJe9jaY6hMQ4iJs7CMOKHQ5_4Kvw0fo4Q/closedform">
-                <div className="border-8 border-white flex justify-center items-center h-full px-4">
+                <div className="border-4 border-white flex justify-center items-center h-full p-4">
                   <div className="font-bold text-xl">지원서 작성</div>
                 </div>
               </a>

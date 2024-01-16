@@ -49,7 +49,7 @@ export default function FAQ() {
   }, [subject]);
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col pt-12">
       <div className="flex flex-row items-start justify-center">
         <div className="flex text-5xl font-bold">자주 묻는 질문</div>
         <div className="flex items-start text-Gray">FAQ</div>

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Apply from "./apply/page";
 import History from "./history/page";
-import Notice from "./notice/page";
+import Notice from "./post/page";
 
 export default function Outlet() {
   const [pageIndex, setPageIndex] = useState(0);

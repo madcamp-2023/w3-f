@@ -37,7 +37,10 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 flex justify-between text-xl pl-8 pr-8 pb-4 pt-4 md:text-2xl  z-10 bg-backGray">
+    <header
+      className="fixed top-0 left-0 right-0 flex justify-between text-xl p-4 md:text-2xl  z-10 bg-backGray"
+      style={{ height: "10vh" }}
+    >
       <div onClick={() => router.push("/")} className="">
         <div className="border-black border-8 font-black text-4xl">
           ㅁㅇㅋㅍ

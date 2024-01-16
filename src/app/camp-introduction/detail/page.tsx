@@ -9,7 +9,23 @@ const Item = ({ content }: { content: string[] }) => {
       <div className="mr-5">
         {content.map((item, index) => {
           return (
-            <div key={index} className="block pt-2 text-lg">
+            <div key={index} className="block pt-2 text-lg ">
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+const Item2 = ({ content }: { content: string[] }) => {
+  return (
+    <div className="flex flex-row">
+      <div className="mr-5">
+        {content.map((item, index) => {
+          return (
+            <div key={index} className="block pt-2 text-lg w-full text-end">
               {item}
             </div>
           );
@@ -103,7 +119,7 @@ export default function CampIntroductionDetailPage() {
         <div className="flex flex-row p-12 bg-black text-white ">
           <div className="flex flex-col pr-12 w-full justify-end items-end">
             {applicationItemList1.map((item, index) => (
-              <Item content={item.content} key={index} />
+              <Item2 content={item.content} key={index} />
             ))}
           </div>
           <div className="font-bold border-l border-white text-4xl w-1/6 text-center">

@@ -76,11 +76,13 @@ export default function MadcampLifeDetailPage() {
     <Layout>
       <div style={{ height: "90vh" }}>
         <div className="flex flex-row p-8  justify-center items-center">
-          <div className="font-bold  text-4xl w-1/6  justify-center items-center">
+          <div className="font-bold  text-4xl ">
             <Image src={JBJ} alt="1" />
           </div>
-          <div className="flex flex-col pl-12 w-full">
-            <div className="font-bold text-4xl pt-4 pb-4">함께하는 즐거움</div>
+          <div className="flex flex-col pl-12 w-full justify-start items-start">
+            <div className="font-bold text-4xl pt-4 pb-4 w-full text-start">
+              함께하는 즐거움
+            </div>
             {applicationItemList.map((item, index) => (
               <Item content={item.content} key={index} />
             ))}
@@ -96,13 +98,13 @@ export default function MadcampLifeDetailPage() {
               <Item2 content={item.content} key={index} />
             ))}
           </div>
-          <div className="font-bold  text-4xl w-1/6 justify-center items-center">
+          <div className="font-bold  text-4xl ">
             <Image src={JBJ} alt="1" />
           </div>
         </div>
 
         <div className="flex flex-row p-8  justify-center items-center">
-          <div className="font-bold  text-4xl w-1/6  justify-center items-center">
+          <div className="font-bold  text-4xl ">
             <Image src={JBJ} alt="1" />
           </div>
           <div className="flex flex-col pl-12 w-full">
@@ -114,12 +116,10 @@ export default function MadcampLifeDetailPage() {
         </div>
 
         <div className="flex justify-end p-8 font-bold text-2xl">
-          <button className="flex flex-row justify-center items-center">
-            <LinkButton route="/review">
-              <span className="p-2">몰입캠프 후기 자세히보기</span>{" "}
-            </LinkButton>
+          <div className="flex flex-row justify-center items-center">
+            <LinkButton route="/review" text="몰입캠프 후기 자세히보기" />
             <FaArrowRight size={40} />
-          </button>
+          </div>
         </div>
       </div>
     </Layout>

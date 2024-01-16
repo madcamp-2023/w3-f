@@ -10,7 +10,7 @@ const Text = ({ children }: { children: React.ReactNode }) => {
 export default function ApplyPage() {
   return (
     <Layout>
-      <div className="flex flex-col p-12">
+      <div className="flex flex-col p-12 bg-blue-900 ">
         <div className="group z-10">
           <div>
             <Text>몰입캠프에서 함께할 다음 몰디 여러분을 기다립니다!</Text>

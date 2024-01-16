@@ -100,7 +100,7 @@ export default function Main() {
     //   ></div>
     // </div>
     <div>
-      {/* <Madcamp /> */}
+      <Madcamp />
       {/* <CampIntroductionPage /> */}
       {/* <ManagementIntroductionPage /> */}
       {/* <MadcampLifePage /> */}

@@ -23,7 +23,7 @@ async function getPostList({ page }: { page: number }) {
   ).data;
 }
 
-export default function Notice() {
+export default function Post() {
   const [noticeNumber, setNoticeNumber] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [postList, setPostList] = useState<PostItem[] | null>([
