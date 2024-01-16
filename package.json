@@ -20,6 +20,7 @@
     "@types/react-modal": "^3.16.3",
     "@types/react-table": "^7.7.19",
     "axios": "^1.6.5",
+    "lottie-web": "^5.12.2",
     "mo-js": "^0.288.2",
     "next": "^14.0.4",
     "react": "^18",

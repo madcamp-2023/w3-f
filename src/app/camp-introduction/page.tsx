@@ -1,5 +1,5 @@
 import Gifloader from "@/components/GifLoader";
-import animationData from "./apply.json";
+import animationData from "./camp-introduction.json";
 import Layout from "@/components/Layout";
 import Link from "@/components/Link";
 
@@ -7,16 +7,19 @@ const Text = ({ children }: { children: React.ReactNode }) => {
   return <div className="font-bold text-4xl p-2">{children}</div>;
 };
 
-export default function ApplyPage() {
+export default function CampIntroductionPage() {
   return (
     <Layout>
       <div className="flex flex-col p-12">
         <div className="group z-10">
           <div>
-            <Text>몰입캠프에서 함께할 다음 몰디 여러분을 기다립니다!</Text>
+            <Text>몰입캠프는</Text>
+            <Text>
+              학생들이 자율적으로 집중개발을 경험하는 프로그래밍 캠프입니다.
+            </Text>
           </div>
           <div className="flex justify-start">
-            <Link route="/apply/detail">몰입캠프 지원하기</Link>
+            <Link route="/camp-introduction/detail">몰입캠프 자세히보기</Link>
           </div>
         </div>
         <div className="fixed top-0 right-0 z-0">
