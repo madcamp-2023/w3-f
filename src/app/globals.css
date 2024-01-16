@@ -88,7 +88,7 @@ body {
   background: #ea364e;
 }
 
-@keyframes slideInFromUp {
+/* @keyframes slideInFromUp {
   from {
     transform: translateY(100%);
   }
@@ -112,6 +112,32 @@ body {
 
 .sliding-down {
   animation: slideInFromUp 2s forwards;
+} */
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(-60%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.slide-up {
+  animation: slideUp 2s cubic-bezier(0.6, 0, 0.3, 1) forwards;
+}
+
+.slide-down {
+  animation: slideDown 2s cubic-bezier(0.6, 0, 0.3, 1) forwards;
 }
 
 .fullPage {
