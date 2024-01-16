@@ -69,7 +69,7 @@ export default function ReviewCreate({
   const [next, setNext] = useState("");
   const [github, setGithub] = useState("");
 
-  const userId = "1";
+  const userId = "jhj9422";
 
   return (
     <ReactModal

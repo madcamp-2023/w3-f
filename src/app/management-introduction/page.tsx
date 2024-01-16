@@ -24,7 +24,7 @@ export default function ManagementIntroductionPage() {
         </div>
 
         <div className="fixed top-0 left-1/2 transform -translate-x-1/2 z-0">
-          <Gifloader animationData={animationData} width={1000} height={1000} />
+          <Gifloader animationData={animationData} width={1400} height={1200} />
         </div>
       </div>
     </Layout>

@@ -1,4 +1,4 @@
-export const URL = "http://16.170.24.188:3000";
+export const URL = "http://16.170.24.188:3001";
 export const MADCAMP =
   "https://github.com/madcamp-2023/w3-f/assets/99087502/a7dfc0d8-a7f8-4dac-84da-ec181132e740";
 

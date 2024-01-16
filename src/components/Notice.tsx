@@ -14,7 +14,13 @@ interface PostItem {
 }
 
 async function getPostList({ page }: { page: number }) {
-  return (await axios.get(URL + `/post?page=${page}`)).data;
+  return (
+    await axios.get(URL + `/post`, {
+      params: {
+        page: page,
+      },
+    })
+  ).data;
 }
 
 export default function Notice() {
@@ -103,9 +109,10 @@ export default function Notice() {
 
   useEffect(() => {
     //TODO : TEST POST
-    // getPostList({ page: currentPage }).then((response) =>
-    //   setPostList(response)
-    // );
+    getPostList({ page: currentPage }).then((response) => {
+      console.log(response);
+      // setPostList(response);
+    });
   }, [currentPage]);
 
   const columns: Column[] = useMemo(

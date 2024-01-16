@@ -154,3 +154,21 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
 }
+
+.rotate-translate {
+  /* Adjust the width and height as needed */
+  width: 100vw;
+  /* Create a background with a linear-gradient and set the angle */
+  background: linear-gradient(4.962deg, #fff 50%, #000 50%);
+
+  z-index: 0;
+}
+
+.rotate-translate2 {
+  /* Adjust the width and height as needed */
+  width: 100vw;
+  /* Create a background with a linear-gradient and set the angle */
+  background: linear-gradient(-4.962deg, #fff 50%, #000 50%);
+
+  z-index: 0;
+}

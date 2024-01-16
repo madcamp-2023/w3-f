@@ -35,35 +35,38 @@ const getCardList = async () => {
 
 export default function Review() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cardList, setCardList] = useState([
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-  ]);
+  // const [cardList, setCardList] = useState([
+  //   {
+  //     name: "정OO",
+  //     title: "몰입캠프 후기!",
+  //     content:
+  //       "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
+  //     github: "https://haejunejung.github.io",
+  //   },
+  //   {
+  //     name: "정OO",
+  //     title: "몰입캠프 후기!",
+  //     content:
+  //       "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
+  //     github: "https://haejunejung.github.io",
+  //   },
+  // ]);
+
+  const [cardList, setCardList] = useState();
 
   useEffect(() => {
     //TODO: TEST
-    // getCardList().then((response) => {
-    //   setCardList(response);
-    // });
+    getCardList().then((response) => {
+      console.log(response);
+      setCardList(response);
+    });
   }, []);
 
   return (
     <div>
       <div className="flex flex-col p-12">
         <div className="ml-8 text-4xl font-bold">몰입 생활을 즐긴 사람들</div>
-        <div className="flex flex-wrap">
+        {/* <div className="flex flex-wrap">
           {cardList &&
             cardList.map((card: CardProps, index: number) => {
               const content =
@@ -81,7 +84,7 @@ export default function Review() {
                 />
               );
             })}
-        </div>
+        </div> */}
       </div>
       <div className="fixed bottom-10 right-10 ">
         <BiSolidEditLocation size={80} onClick={() => setIsModalOpen(true)} />

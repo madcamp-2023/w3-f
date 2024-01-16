@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import lottie from "lottie-web";
 
 interface GifLoaderProps {
@@ -19,6 +19,7 @@ const Gifloader = ({
   height: number;
 }) => {
   const animationContainer = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (animationContainer.current) {
@@ -31,12 +32,19 @@ const Gifloader = ({
       });
       anim.setSpeed(0.5); // Set the speed to 0.5x
 
+      anim.addEventListener("DOMLoaded", () => {
+        setIsLoading(false); // Hide loading screen once animation is loaded
+      });
+
       return () => anim.destroy(); // Optional clean up for unmounting
     }
   }, []);
 
   return (
-    <div ref={animationContainer} style={{ width: width, height: height }} />
+    <>
+      {isLoading && <div className="bg-red-900">Loading Animation...</div>}
+      <div ref={animationContainer} style={{ width: width, height: height }} />
+    </>
   );
 };
 

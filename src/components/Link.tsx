@@ -17,7 +17,7 @@ export default function Link({
       className="pt-12 opacity-0 group-hover:opacity-100"
       onClick={() => router.push(route)}
     >
-      <span className="border-b border-black p-2">{children}</span>
+      <span className="border-b border-black p-2 text-2xl">{children}</span>
     </button>
   );
 }

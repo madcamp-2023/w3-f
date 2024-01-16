@@ -5,8 +5,6 @@ import MANAGEMENT from "/public/management_team.png";
 import Image from "next/image";
 
 export default function Introduce() {
-  const videoId = "DWGAHwzPs0Q"; // YouTube 동영상 ID
-
   return (
     <div
       className="flex flex-row justify-center items-start"

@@ -47,8 +47,10 @@ export default function Login({
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    //TODO : TEST GET USER (Login)
-    getUser({ userId, password });
+    //TODO : Recoil state management
+    getUser({ userId, password }).then((response) => {
+      console.log(response);
+    });
     setUserId("");
     setPassword("");
   };
@@ -107,7 +109,7 @@ export default function Login({
         </div>
       </LoginModal>
       <button onClick={openModal}>
-        <IoPersonCircle size={30} />
+        <IoMdPerson size={40} />
       </button>
     </>
   );

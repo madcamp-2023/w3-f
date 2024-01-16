@@ -15,7 +15,7 @@ export default function CampIntroductionPage() {
           <div>
             <Text>몰입캠프는</Text>
             <Text>
-              학생들이 자율적으로 집중개발을 경험하는 프로그래밍 캠프입니다.
+              학생들이 자율적으로 집중개발을 경험하는 프로그래밍 캠프입니다
             </Text>
           </div>
           <div className="flex justify-start">

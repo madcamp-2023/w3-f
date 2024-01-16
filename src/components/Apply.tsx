@@ -120,9 +120,7 @@ Internet Explorer에서 강의계획서 및 지원서가 열리지 않을 경우
   return (
     <div className="flex flex-col">
       <div className="flex flex-row" style={{ height: "90vh" }}>
-        <div className=" w-1/5 flex justify-center font-bold text-4xl mt-10">
-          지원하기
-        </div>
+        <div className=" w-1/5 flex justify-center font-bold text-4xl mt-10"></div>
         <div className="flex flex-row bg-black text-white w-full h-full">
           <div className="font-bold text-4xl mt-10 ml-16">모집개요</div>
           <div className="flex flex-col mt-8">
@@ -155,9 +153,7 @@ Internet Explorer에서 강의계획서 및 지원서가 열리지 않을 경우
             </button>
           </div>
         </div>
-        <div className="w-1/5 flex justify-center font-bold text-4xl mt-10">
-          지원하기
-        </div>
+        <div className="w-1/5 flex justify-center font-bold text-4xl mt-10"></div>
       </div>
     </div>
   );
