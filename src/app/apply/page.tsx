@@ -10,7 +10,7 @@ const Text = ({ children }: { children: React.ReactNode }) => {
 export default function ApplyPage() {
   return (
     <Layout>
-      <div className="flex flex-col p-12 bg-blue-900 ">
+      <div className="flex flex-col p-12 ">
         <div className="group z-10">
           <div>
             <Text>몰입캠프에서 함께할 다음 몰디 여러분을 기다립니다!</Text>
@@ -19,7 +19,7 @@ export default function ApplyPage() {
             <Link route="/apply/detail">몰입캠프 지원하기</Link>
           </div>
         </div>
-        <div className="fixed top-0 right-0 z-0">
+        <div className="fixed top-0 right-40 z-0">
           <Gifloader animationData={animationData} width={1000} height={1000} />
         </div>
       </div>

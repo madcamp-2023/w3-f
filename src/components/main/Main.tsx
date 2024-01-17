@@ -2,16 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import Madcamp from "./Madcamp";
-import Review from "./Review";
-import Introduce from "./Introduce";
+import Madcamp from "../Madcamp";
 import { pageState } from "@/recoil/recoil";
 import CampIntroductionPage from "@/app/camp-introduction/page";
 import ManagementIntroductionPage from "@/app/management-introduction/page";
 import MadcampLifePage from "@/app/madcamp-life/page";
 import ApplyPage from "@/app/apply/page";
+import { GoDotFill } from "react-icons/go";
+import { GoDot } from "react-icons/go";
 
-const pages = ["Madcamp", "Review", "Introduce"];
+const pages = [
+  "Madcamp",
+  "CampIntroduction",
+  "ManagementIntroduction",
+  "MadcampLife",
+  "Apply",
+];
 
 export default function Main() {
   const [visibleComponent, setVisibleComponent] = useState("Madcamp");
@@ -75,36 +81,48 @@ export default function Main() {
     switch (visibleComponent) {
       case "Madcamp":
         return <Madcamp />;
-      case "Review":
-        return <Review />;
-      case "Introduce":
-        return <Introduce />;
+      case "CampIntroduction":
+        return <CampIntroductionPage />;
+      case "ManagementIntroduction":
+        return <ManagementIntroductionPage />;
+      case "MadcampLife":
+        return <MadcampLifePage />;
+      case "Apply":
+        return <ApplyPage />;
       default:
         return <Madcamp />;
     }
   };
 
   return (
-    // <div className={`relative top-0 left-0 right-0 bottom-0`}>
-    //   {renderComponent()}
-    //   <div
-    //     className={`absolute top-0 left-0 right-0 bottom-0  ${overlayClass}`}
-    //     style={{
-    //       zIndex: 10,
-    //       width: "100vw",
-    //       height: "100vh",
-    //       backgroundColor: overlayClass ? "black" : "transparent",
-    //       display: overlayClass ? "block" : "none",
-    //       overflow: "hidden",
-    //     }}
-    //   ></div>
-    // </div>
-    <div>
-      <Madcamp />
-      {/* <CampIntroductionPage /> */}
-      {/* <ManagementIntroductionPage /> */}
-      {/* <MadcampLifePage /> */}
-      {/* <ApplyPage /> */}
+    <div className={`relative top-0 left-0 right-0 bottom-0`}>
+      {renderComponent()}
+      <div
+        className={`absolute top-0 left-0 right-0 bottom-0  ${overlayClass}`}
+        style={{
+          zIndex: 10,
+          width: "100vw",
+          height: "100vh",
+          backgroundColor: overlayClass ? "black" : "transparent",
+          display: overlayClass ? "block" : "none",
+          overflow: "hidden",
+        }}
+      ></div>
+      <div className="fixed bottom-40 right-20  h-40">
+        <div className="flex flex-col">
+          {pages.map((page, index) => {
+            return (
+              <div className="" key={index}>
+                {page === visibleComponent ? (
+                  <GoDotFill size={30} />
+                ) : (
+                  <GoDot size={30} />
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 }

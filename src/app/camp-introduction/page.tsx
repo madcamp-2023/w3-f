@@ -22,7 +22,7 @@ export default function CampIntroductionPage() {
             <Link route="/camp-introduction/detail">몰입캠프 자세히보기</Link>
           </div>
         </div>
-        <div className="fixed top-0 right-0 z-0">
+        <div className="fixed top-0 right-40 z-0">
           <Gifloader animationData={animationData} width={1000} height={1000} />
         </div>
       </div>
