@@ -16,7 +16,7 @@ export default function ManagementIntroductionPage() {
           <Text>
             강사진과 함께 운영진이 함께 기획해 나가는 프로그래밍 캠프입니다
           </Text>
-          <div className="flex justify-end">
+          <div className="flex justify-end p-2">
             <Link route="/management-introduction/detail">
               운영진 자세히보기
             </Link>

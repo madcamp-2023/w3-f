@@ -5,6 +5,10 @@ import Image from "next/image";
 import { FaArrowRight } from "react-icons/fa";
 import JBJ from "/public/JBJ.jpg";
 
+import Life from "/public/life.png";
+import Immersion from "/public/immersion.png";
+import Together from "/public/together.png";
+
 const Item = ({ content }: { content: string[] }) => {
   return (
     <div className="flex flex-row">
@@ -77,7 +81,7 @@ export default function MadcampLifeDetailPage() {
       <div style={{ height: "95vh" }}>
         <div className="flex flex-row p-8  justify-center items-center">
           <div className="font-bold  text-4xl ">
-            <Image src={JBJ} alt="1" />
+            <Image src={Together} alt="together" />
           </div>
           <div className="flex flex-col pl-12 w-full justify-start items-start">
             <div className="font-bold text-4xl pt-4 pb-4 w-full text-start">
@@ -99,23 +103,23 @@ export default function MadcampLifeDetailPage() {
             ))}
           </div>
           <div className="font-bold  text-4xl ">
-            <Image src={JBJ} alt="1" />
+            <Image src={Immersion} alt="immersion" />
           </div>
         </div>
 
         <div className="flex flex-row p-8  justify-center items-center">
           <div className="font-bold  text-4xl ">
-            <Image src={JBJ} alt="1" />
+            <Image src={Life} alt="life" />
           </div>
           <div className="flex flex-col pl-12 w-full">
-            <div className="font-bold text-4xl pt-4 pb-4">함께하는 즐거움</div>
+            <div className="font-bold text-4xl pt-4 pb-4">경험하는 즐거움</div>
             {applicationItemList.map((item, index) => (
               <Item content={item.content} key={index} />
             ))}
           </div>
         </div>
 
-        <div className="flex justify-end p-8 font-bold text-2xl">
+        <div className="absolute bottom-0 right-0 p-8 font-bold text-2xl">
           <div className="flex flex-row justify-center items-center">
             <LinkButton route="/review">
               <span className="p-2">몰입캠프 후기 자세히보기</span>{" "}

@@ -8,6 +8,8 @@ import Signup from "./Signup";
 
 import Logo from "/public/logo2.png";
 import Image from "next/image";
+import { useResetRecoilState, useSetRecoilState } from "recoil";
+import { pageState } from "@/recoil/recoil";
 
 const Button = ({
   children,
@@ -42,13 +44,18 @@ export default function Header() {
     setIsSignupModalOpen(true);
   };
 
+  const setPageIndex = useSetRecoilState(pageState);
+
   return (
     <header
       className="fixed top-0 left-0 right-0 flex justify-between text-xl p-4 md:text-2xl  z-10 bg-backGray"
       style={{ height: "6vh" }}
     >
       <button
-        onClick={() => router.push("/")}
+        onClick={() => {
+          setPageIndex(0);
+          router.push("/");
+        }}
         className="flex justify-center items-center"
       >
         <Image src={Logo} alt="몰입캠프" className="w-32" />

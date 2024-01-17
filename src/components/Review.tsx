@@ -6,8 +6,10 @@ import { useEffect, useState } from "react";
 import { FaGithubSquare } from "react-icons/fa";
 import { BiSolidEditLocation } from "react-icons/bi";
 import ReviewCreate from "./ReviewCreate";
+import ReviewDetail from "./ReviewDetail";
 
 interface CardProps {
+  userId: string;
   name: string;
   title: string;
   content: string;
@@ -15,25 +17,52 @@ interface CardProps {
   github: string;
 }
 
-const Card = ({ name, title, content, next, github }: CardProps) => {
+const Card = ({ userId, name, title, content, next, github }: CardProps) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const onClick = () => {
+    setIsModalOpen(true);
+  };
+
   return (
-    <button className="flex flex-col w-1/3 p-8 justify-between items-start text-start">
-      <div className="font-bold text-2xl mb-2">{title}</div>
-      <div className="text-base text-gray-500 mt-2 mb-2">{content}</div>
-      <div className="mt-auto">
-        <div className="text-base text-gray-400 mb-2">
-          {name.substring(0, 1) + "OO"}
+    <>
+      <button
+        className="flex flex-col w-1/3 p-8 justify-between items-start text-start"
+        onClick={onClick}
+      >
+        <div className="font-bold text-2xl mb-2">{title}</div>
+        <div className="text-base text-gray-500 mt-2 mb-2">{content}</div>
+        <div className="mt-auto">
+          <div className="text-base text-gray-400 mb-2">
+            {name.substring(0, 1) + "OO"}
+          </div>
+          <a href={github}>
+            <FaGithubSquare size={30} />
+          </a>
         </div>
-        <a href={github}>
-          <FaGithubSquare size={30} />
-        </a>
-      </div>
-    </button>
+      </button>
+      {isModalOpen && (
+        <ReviewDetail
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          name={name}
+          userId={userId}
+          title={title}
+          content={content}
+          next={next}
+          github={github}
+        />
+      )}
+    </>
   );
 };
 
 const getCardList = async () => {
-  return (await axios.get(URL + `/review`)).data;
+  try {
+    return (await axios.get(URL + `/review`)).data;
+  } catch (e: any) {
+    console.log(e);
+  }
 };
 
 export default function Review() {
@@ -43,12 +72,9 @@ export default function Review() {
   useEffect(() => {
     //TODO: TEST
     getCardList().then((response) => {
-      console.log(response);
       setCardList(response);
     });
-  }, []);
-
-  const videoId = "DWGAHwzPs0Q"; // YouTube 동영상 ID
+  }, [isModalOpen]);
 
   return (
     <div>
@@ -81,6 +107,7 @@ export default function Review() {
 
               return (
                 <Card
+                  userId={card.userId}
                   name={card.name}
                   title={card.title}
                   content={card.content}

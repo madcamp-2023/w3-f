@@ -25,7 +25,7 @@ export default function Main() {
 
   const [pageIndex, setPageIndex] = useRecoilState(pageState);
   const totalPages = pages.length;
-  const animationDuration = 1000; // Duration of the animation in milliseconds
+  const animationDuration = 2000; // Duration of the animation in milliseconds
 
   useEffect(() => {
     const handleWheel = (e: any) => {
@@ -49,13 +49,13 @@ export default function Main() {
 
   useEffect(() => {
     if (overlayClass !== "") {
-      setTimeout(() => {
-        setOverlayClass("");
-      }, animationDuration);
-
-      setTimeout(() => {
-        setVisibleComponent(pages[pageIndex]);
-      }, 900);
+      setVisibleComponent(pages[pageIndex]);
+      // setTimeout(() => {
+      //   setOverlayClass("");
+      // }, animationDuration);
+      // setTimeout(() => {
+      //   setVisibleComponent(pages[pageIndex]);
+      // }, 900);
     }
   }, [pageIndex, overlayClass]);
 
@@ -96,10 +96,18 @@ export default function Main() {
     }
   };
 
+  const handleDot = (page: string, index: number) => {
+    setPageIndex(index);
+  };
+
+  useEffect(() => {
+    setVisibleComponent(pages[pageIndex]);
+  }, [pageIndex]);
+
   return (
     <div className={`relative top-0 left-0 right-0 bottom-0`}>
       {renderComponent()}
-      <div
+      {/* <div
         className={`absolute top-0 left-0 right-0 bottom-0  ${overlayClass}`}
         style={{
           zIndex: 10,
@@ -109,7 +117,7 @@ export default function Main() {
           display: overlayClass ? "block" : "none",
           overflow: "hidden",
         }}
-      ></div>
+      ></div> */}
       <div className="fixed bottom-40 right-20  h-40">
         <div className="flex flex-col">
           {pages.map((page, index) => {
@@ -118,7 +126,7 @@ export default function Main() {
                 {page === visibleComponent ? (
                   <GoDotFill size={30} />
                 ) : (
-                  <GoDot size={30} onClick={() => setVisibleComponent(page)} />
+                  <GoDot size={30} onClick={() => handleDot(page, index)} />
                 )}
               </div>
             );

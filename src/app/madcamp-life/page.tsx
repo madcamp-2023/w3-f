@@ -14,7 +14,7 @@ export default function MadcampLifePage() {
         <div className="group z-10 mr-12">
           <Text>한달간의 몰입생활을</Text>
           <Text>여러분께 소개합니다</Text>
-          <div className="flex justify-end">
+          <div className="flex justify-end p-2">
             <Link route="/madcamp-life/detail">몰입생활 자세히보기</Link>
           </div>
         </div>

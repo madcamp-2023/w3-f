@@ -11,7 +11,6 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import { userState } from "@/recoil/recoil";
 import { MdHotelClass } from "react-icons/md";
-import { response } from "express";
 
 interface LoginProps {
   isModalOpen: boolean;
@@ -75,6 +74,17 @@ export default function Login({
     setIsModalOpen(false);
   };
 
+  const handleWithdrawal = async () => {
+    setUser(null);
+    setIsModalOpen(false);
+
+    await axios.delete(URL + "/user", {
+      params: {
+        userId: user?.id,
+      },
+    });
+  };
+
   return (
     <>
       <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
@@ -109,11 +119,13 @@ export default function Login({
                   로그아웃
                 </button>
                 <button
-                  className="mt-auto hover:font-bold text-sm"
-                  onClick={openSignupModal}
+                  type="submit"
+                  className="w-60 bg-black text-white p-2 m-2 rounded-md"
+                  onClick={handleWithdrawal}
                 >
-                  Create Your Account
+                  회원탈퇴
                 </button>
+                <button className="mt-auto hover:font-bold text-sm"></button>
               </>
             ) : (
               <>
@@ -142,6 +154,7 @@ export default function Login({
                     로그인
                   </button>
                 </form>
+
                 <button
                   className="mt-auto hover:font-bold text-sm"
                   onClick={openSignupModal}

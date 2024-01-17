@@ -15,7 +15,7 @@ export default function ApplyPage() {
           <div>
             <Text>몰입캠프에서 함께할 다음 몰디 여러분을 기다립니다!</Text>
           </div>
-          <div className="flex justify-start ">
+          <div className="flex justify-start p-2">
             <Link route="/apply/detail">몰입캠프 지원하기</Link>
           </div>
         </div>

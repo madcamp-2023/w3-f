@@ -18,7 +18,7 @@ export default function CampIntroductionPage() {
               학생들이 자율적으로 집중개발을 경험하는 프로그래밍 캠프입니다
             </Text>
           </div>
-          <div className="flex justify-start">
+          <div className="flex justify-start p-2">
             <Link route="/camp-introduction/detail">몰입캠프 자세히보기</Link>
           </div>
         </div>

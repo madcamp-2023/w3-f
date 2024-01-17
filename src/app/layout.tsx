@@ -22,9 +22,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.png" sizes="any" />
         <Providers>
           <AnimatedCursor
-            innerSize={20}
+            innerSize={25}
             outerSize={50}
-            color="0, 0, 0"
+            color="255, 0, 0"
+            outerStyle={{ color: "black" }}
             outerAlpha={0.1}
             innerScale={0.7}
             outerScale={1.5}

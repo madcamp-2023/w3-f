@@ -2,38 +2,32 @@ import Image from "next/image";
 import JBJ from "/public/JBJ.jpg";
 import Layout from "@/components/Layout";
 
-const Item = ({ content }: { content: string[] }) => {
+function ItemList({
+  content,
+  textAligned = "left",
+}: {
+  content: string[];
+  textAligned?: string;
+}) {
   return (
-    <div className="flex flex-row">
-      <div className="mr-5">
-        {content.map((item, index) => {
-          return (
-            <div key={index} className="block pt-4 text-base w-full text-start">
-              {item}
-            </div>
-          );
-        })}
-      </div>
+    // <div className="flex flex-row">
+    <div className="mr-5">
+      {content.map((item, index) => {
+        return (
+          <div
+            key={index}
+            className={`block p-1 border-b text-lg w-full  ${
+              textAligned === "left" ? "text-start" : "text-end"
+            }`}
+          >
+            {item}
+          </div>
+        );
+      })}
     </div>
+    // </div>
   );
-};
-
-const Item2 = ({ content }: { content: string[] }) => {
-  return (
-    <div className="flex flex-row">
-      <div className="mr-5">
-        {content.map((item, index) => {
-          return (
-            <div key={index} className="block pt-2 text-base w-full text-end">
-              {item}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
+}
 export default function History() {
   const applicationDetails = `2023 여름참가생 77명, 몰입캠프 15기
   2022 여름참가생 79명, 몰입캠프 14기
@@ -65,10 +59,13 @@ export default function History() {
     },
   ];
 
-  const applicationDetails2 = `2016 겨울참가생 20명, 몰입캠프 3기
-  여름참가생 22명, 몰입캠프 2기
-  2015 겨울참가생 21명, 몰입캠프 1기, 장병규의장 & KAIST 전산학부 류석영교수 공동진행
-  2010 - 2014 참가생 10여 명, 본엔젤스 매드캠프 1기 ~ 9기 운영`;
+  const applicationDetails2 = `
+  2016	겨울	참가생 20명, 몰입캠프 3기
+  여름	참가생 22명, 몰입캠프 2기
+  2015	겨울	참가생 21명, 몰입캠프 1기, 
+  장병규의장 & KAIST 전산학부 류석영교수 공동진행
+  2010-2014	참가생 10여 명, 본엔젤스 매드캠프 1기 ~ 9기 운영
+  `;
   const applicationDetailsArray2 = applicationDetails2.split("\n");
 
   const applicationItemList2 = [
@@ -80,34 +77,40 @@ export default function History() {
 
   return (
     <Layout>
-      <div className="flex flex-col h-9/10">
-        <div className="flex flex-row justify-center items-center h-full p-6">
-          <div className="flex-1 flex justify-center items-center">
+      <div className="flex flex-col h-9/10 p-12">
+        <div className="flex flex-row  h-full p-6">
+          <div className="flex-1 flex w-full justify-end">
             <Image src={JBJ} alt="1" className="" />
           </div>
-          <div className="flex-1 flex justify-center items-center border-l-4 border-black">
+          <div className="flex-1 flex  border-l-4 border-black">
             {applicationItemList.map((item, index) => (
-              <Item content={item.content} key={index} />
+              <ItemList content={item.content} key={index} />
             ))}
           </div>
         </div>
-        <div className="flex flex-row justify-center items-center h-full p-6">
-          <div className="flex-1 flex justify-center items-center border-r-4 border-black">
+
+        <div className="flex flex-row  h-full p-6 ">
+          <div className="flex-1 flex  border-r-4 border-black w-full justify-end">
             {applicationItemList1.map((item, index) => (
-              <Item2 content={item.content} key={index} />
+              <ItemList
+                content={item.content}
+                key={index}
+                textAligned="right"
+              />
             ))}
           </div>
-          <div className="flex-1 flex justify-center items-center">
+          <div className="flex-1 flex ">
             <Image src={JBJ} alt="1" className="" />
           </div>
         </div>
-        <div className="flex flex-row justify-center items-center h-full p-6">
-          <div className="flex-1 flex justify-center items-center">
+
+        <div className="flex flex-row  h-full p-6">
+          <div className="flex-1 flex w-full justify-center ">
             <Image src={JBJ} alt="1" className="" />
           </div>
-          <div className="flex-1 flex justify-center items-center border-l-4 border-black">
-            {applicationItemList.map((item, index) => (
-              <Item content={item.content} key={index} />
+          <div className="flex-1 flex  border-l-4 border-black jus">
+            {applicationItemList2.map((item, index) => (
+              <ItemList content={item.content} key={index} />
             ))}
           </div>
         </div>

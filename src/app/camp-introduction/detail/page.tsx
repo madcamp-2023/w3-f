@@ -107,12 +107,12 @@ export default function CampIntroductionDetailPage() {
           textAligned="left"
         />
 
-        <div className="flex justify-end p-8 font-bold text-2xl">
+        <div className="flex justify-end p-8 font-bold text-2xl ">
           <div className="flex flex-row justify-center items-center">
-            <LinkButton route="/history">
+            {/* <LinkButton route="/history">
               <span className="p-2">몰입캠프 연혁 자세히 보기</span>{" "}
-            </LinkButton>
-            <FaArrowRight size={40} />
+            </LinkButton> */}
+            {/* <FaArrowRight size={40} /> */}
           </div>
         </div>
       </div>
