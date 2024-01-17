@@ -11,16 +11,19 @@ interface CardProps {
   name: string;
   title: string;
   content: string;
+  next: string;
   github: string;
 }
 
-const Card = ({ name, title, content, github }: CardProps) => {
+const Card = ({ name, title, content, next, github }: CardProps) => {
   return (
     <button className="flex flex-col w-1/3 p-8 justify-between items-start text-start">
       <div className="font-bold text-2xl mb-2">{title}</div>
       <div className="text-base text-gray-500 mt-2 mb-2">{content}</div>
       <div className="mt-auto">
-        <div className="text-base text-gray-400 mb-2">{name}</div>
+        <div className="text-base text-gray-400 mb-2">
+          {name.substring(0, 1) + "OO"}
+        </div>
         <a href={github}>
           <FaGithubSquare size={30} />
         </a>
@@ -35,87 +38,14 @@ const getCardList = async () => {
 
 export default function Review() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cardList, setCardList] = useState([
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-    {
-      name: "정OO",
-      title: "몰입캠프 후기!",
-      content:
-        "인생에서 이렇게 다시 열심히 살 수 있을까 생각한 한달이었습니다. [...]캠프를 통해 많은 지식을 배운 것도 있지만, 무엇보다 그런 지식을 배우는 법을 배워가는 것 같습니다. 특히 프로그래밍같은 분야는 새로운 것을 얼마나 빠르게 받아들이느냐가 가장 중요한 척도라고 생각을 하는데 그런 면에 있어서 스스로 성장하는 법을 배워간 것 같습니다.",
-      github: "https://haejunejung.github.io",
-    },
-  ]);
-
-  // const [cardList, setCardList] = useState();
+  const [cardList, setCardList] = useState<CardProps[] | null>(null);
 
   useEffect(() => {
     //TODO: TEST
-    // getCardList().then((response) => {
-    //   console.log(response);
-    //   setCardList(response);
-    // });
+    getCardList().then((response) => {
+      console.log(response);
+      setCardList(response);
+    });
   }, []);
 
   const videoId = "DWGAHwzPs0Q"; // YouTube 동영상 ID
@@ -129,13 +59,11 @@ export default function Review() {
         <div className="black-bg ">
           <div className="flex justify-center items-center ">
             <iframe
-              width="600"
-              height="400"
-              src={`https://www.youtube.com/embed/${videoId}`}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              title="YouTube Video"
+              width="900"
+              height="500"
+              src="https://www.youtube.com/embed/m8WQJrnEg0Y"
+              title="2019년 여름 KAIST 몰입캠프 참가생 후기"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             ></iframe>
           </div>
           <div className="ml-8 text-4xl font-bold text-white p-12 ">
@@ -146,16 +74,17 @@ export default function Review() {
         <div className="flex flex-wrap p-12">
           {cardList &&
             cardList.map((card: CardProps, index: number) => {
-              const content =
-                card.content.length > 100
-                  ? card.content.substring(0, 100) + "..."
-                  : card.content;
+              // const content =
+              //   card.content.length > 100
+              //     ? card.content.substring(0, 100) + "..."
+              //     : card.content;
 
               return (
                 <Card
                   name={card.name}
                   title={card.title}
-                  content={content}
+                  content={card.content}
+                  next={card.next}
                   github={card.github}
                   key={index}
                 />

@@ -19,7 +19,7 @@ const applicationDetailsArray = applicationDetails.split("\n");
 
 export default function ApplyWriteGuide() {
   return (
-    <div className="flex flex-row" style={{ height: "90vh" }}>
+    <div className="flex flex-row" style={{ height: "95vh" }}>
       <div className="flex flex-row bg-black text-white w-full h-full">
         <div className="flex flex-col p-12 mt-12">
           <ItemList content={applicationDetailsArray} textAligned="left" />

@@ -59,6 +59,8 @@ export default function Signup({
     setUserId("");
     setPassword("");
     setCode("");
+
+    openLoginModal();
   };
 
   const openModal = () => {

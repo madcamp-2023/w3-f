@@ -8,7 +8,7 @@ export default function Introduce() {
   return (
     <div
       className="flex flex-row justify-center items-start"
-      style={{ height: "90vh" }}
+      style={{ height: "95vh" }}
     >
       <div className="flex flex-col mt-16">
         <div className="text-4xl font-bold mb-4 text-center">강사진</div>

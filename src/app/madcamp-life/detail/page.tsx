@@ -74,7 +74,7 @@ export default function MadcampLifeDetailPage() {
 
   return (
     <Layout>
-      <div style={{ height: "90vh" }}>
+      <div style={{ height: "95vh" }}>
         <div className="flex flex-row p-8  justify-center items-center">
           <div className="font-bold  text-4xl ">
             <Image src={JBJ} alt="1" />

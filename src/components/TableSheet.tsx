@@ -31,12 +31,12 @@ const TableSheet: React.FC<{
           prepareRow(row);
           return (
             <tr {...row.getRowProps()} key={index}>
-              {row.cells.map((cell, index) => (
+              {row.cells.map((cell, idx) => (
                 <td
                   {...cell.getCellProps()}
-                  key={index}
+                  key={idx}
                   className="text-left align-top p-2"
-                  onClick={() => handleNoticeNumber(cell)}
+                  onClick={() => handleNoticeNumber(index)}
                 >
                   {cell.render("Cell")}
                 </td>

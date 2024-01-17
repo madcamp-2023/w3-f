@@ -68,7 +68,7 @@ export default function Madcamp() {
   }, []);
 
   return (
-    <div style={{ height: "90vh" }}>
+    <div style={{ height: "95vh" }}>
       <section className="iso-map-wrapper">
         <div id="isometrizer" ref={isometrizerRef}>
           <div

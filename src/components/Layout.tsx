@@ -7,7 +7,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <main>
       <Header />
-      <div style={{ marginTop: "10vh" }}>{children}</div>
+      <div style={{ marginTop: "5vh" }}>{children}</div>
     </main>
   );
 }

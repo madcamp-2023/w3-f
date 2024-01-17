@@ -49,81 +49,10 @@ export default function Post() {
   const [noticeNumber, setNoticeNumber] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [postList, setPostList] = useState<PostItem[] | null>([
-    {
-      number: 0,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "\n서류 심사 결과에 대해, 지원하신 모든 분들께 개별 이메일로 공지가 되었습니다. 메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 연락처로 문의해 주세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 1,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 2,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "께 개별 이메일로 공지가 되었습니다. 메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 연락처로 문의해 주세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 3,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "께 개별 이메일로 공지가 되었습니다. 메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 연락처로 문의해 주세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 4,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        " 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 5,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "안해, 지원하신 모든 분들께 개별 이메일로 공지가 되었습니다. 메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 연락처로 문의해 주세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 6,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "메일을 확인해 주시고, 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 7,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "안녕하세요.\n2023년도 KAIST 몰입캠프 겨울학기지원하신 모든 분들께 개별 이메일로 공지가 되었습니다. 메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 연락처로 문의해 주세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 8,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 p.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-    {
-      number: 9,
-      title: "[공지] 2023년도 몰입캠프 겨울학기 참가 결과 발표",
-      createdDate: "2023년 11월 15일",
-      content:
-        "안녕하세요.\n2023년도 KAIST 몰입캠프 겨울학기에 지원해 주셔서 감사합니다.\n서류 심사 결과에 대해, 지원하신 모든 분들께 개별 이메일로 공지가 되었습니다. 메일을 확인해 주시고, 혹시라도 메일을 받지 못하신 분은 아래 연락처로 문의해 주세요.\n문의 : 몰입캠프 운영팀 (madcamp.kaist@gmail.com)\n보내주신 성원에 감사드리며, 이번에 아쉽게 참가하지 못하신 분들은 다음 학기 개설 시에 뵐 수 있기를 기대하겠습니다.\n감사합니다.",
-    },
-  ]);
+  const [postList, setPostList] = useState<PostItem[] | null>(null);
 
-  const handleNoticeNumber = (cell: any) => {
-    setNoticeNumber(cell.row.original.number);
+  const handleNoticeNumber = (index: any) => {
+    setNoticeNumber(index);
   };
 
   const handlePageNumber = (pageNumber: number) => {
@@ -132,10 +61,11 @@ export default function Post() {
 
   useEffect(() => {
     //TODO : TEST POST
-    // getPostList({ page: currentPage }).then((response) => {
-    //   console.log(response);
-    //   // setPostList(response);
-    // });
+    getPostList({ page: currentPage }).then((response) => {
+      setPostList(response);
+    });
+
+    setNoticeNumber(0);
   }, [currentPage]);
 
   const columns: Column[] = useMemo(
@@ -143,14 +73,26 @@ export default function Post() {
       {
         accessor: "number",
         Header: "#",
+        Cell: ({ value }) => {
+          return <span className="text-lg">{value}</span>;
+        },
       },
       {
         accessor: "title",
         Header: "제목",
+        Cell: ({ value }) => {
+          const parsedValue =
+            value.length > 30 ? value.substring(0, 30) + "..." : value;
+
+          return <span className="text-lg hover:font-bold">{parsedValue}</span>;
+        },
       },
       {
         accessor: "createdDate",
         Header: "등록일",
+        Cell: ({ value }) => {
+          return <span className="text-lg">{value}</span>;
+        },
       },
     ],
     []
@@ -163,18 +105,20 @@ export default function Post() {
   return (
     <div
       className="flex flex-col w-full justify-between"
-      style={{ height: "90vh" }}
+      style={{ height: "95vh" }}
     >
       <div className="flex flex-row h-full">
         <div className="flex flex-col basis-1/2 bg-white  p-12">
           <section className="text-3xl font-bold mb-4">
             <h1>게시판</h1>
           </section>
-          <TableSheet
-            columns={columns}
-            data={data}
-            handleNoticeNumber={handleNoticeNumber}
-          />
+          {postList && (
+            <TableSheet
+              columns={columns}
+              data={data}
+              handleNoticeNumber={handleNoticeNumber}
+            />
+          )}
 
           {user && user.name === "admin" && (
             <section className="flex justify-end mt-10 mr-10 items-end h-full">

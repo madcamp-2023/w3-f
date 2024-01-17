@@ -59,7 +59,7 @@ const itemList = [
 
 export default function RecruitmentOverview() {
   return (
-    <div className="flex flex-row" style={{ height: "90vh" }}>
+    <div className="flex flex-row" style={{ height: "95vh" }}>
       <div className=" w-1/5 flex justify-center font-bold text-4xl mt-10"></div>
       <div className="flex flex-row bg-black text-white w-full h-full">
         <div className="font-bold text-4xl mt-10 ml-16">모집개요</div>

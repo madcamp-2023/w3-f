@@ -11,6 +11,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import { userState } from "@/recoil/recoil";
 import { MdHotelClass } from "react-icons/md";
+import { response } from "express";
 
 interface LoginProps {
   isModalOpen: boolean;
@@ -51,12 +52,14 @@ export default function Login({
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    //TODO : Recoil state management
+    //TODO : user 없을 때, alert
     getUser({ userId, password }).then((response) => {
-      console.log(response);
+      setUser({ id: response?.id, name: response?.name });
     });
+
     setUserId("");
     setPassword("");
+    setIsModalOpen(false);
   };
 
   const openModal = () => {
@@ -150,8 +153,8 @@ export default function Login({
           </div>
         </div>
       </LoginModal>
-      <button onClick={openModal}>
-        <IoMdPerson size={40} />
+      <button onClick={openModal} className=" justify-center items-center flex">
+        <IoMdPerson size={30} />
       </button>
     </>
   );

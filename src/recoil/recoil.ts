@@ -7,5 +7,5 @@ export const pageState = atom({
 
 export const userState = atom<User | null>({
   key: "userState",
-  default: { id: "admin", name: "admin" },
+  default: null,
 });

@@ -25,7 +25,7 @@ export default function Main() {
 
   const [pageIndex, setPageIndex] = useRecoilState(pageState);
   const totalPages = pages.length;
-  const animationDuration = 2000; // Duration of the animation in milliseconds
+  const animationDuration = 1000; // Duration of the animation in milliseconds
 
   useEffect(() => {
     const handleWheel = (e: any) => {
@@ -48,12 +48,14 @@ export default function Main() {
   }, [pageIndex, overlayClass]);
 
   useEffect(() => {
-    setVisibleComponent(pages[pageIndex]);
-
     if (overlayClass !== "") {
       setTimeout(() => {
         setOverlayClass("");
       }, animationDuration);
+
+      setTimeout(() => {
+        setVisibleComponent(pages[pageIndex]);
+      }, 900);
     }
   }, [pageIndex, overlayClass]);
 
@@ -116,7 +118,7 @@ export default function Main() {
                 {page === visibleComponent ? (
                   <GoDotFill size={30} />
                 ) : (
-                  <GoDot size={30} />
+                  <GoDot size={30} onClick={() => setVisibleComponent(page)} />
                 )}
               </div>
             );

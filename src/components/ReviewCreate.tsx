@@ -4,6 +4,8 @@ import ReactModal from "react-modal";
 import InputForm from "./InputForm";
 import axios from "axios";
 import { URL } from "@/utils/constants";
+import { useRecoilValue } from "recoil";
+import { userState } from "@/recoil/recoil";
 
 interface ReviewCraeteProps {
   isModalOpen: boolean;
@@ -68,8 +70,22 @@ export default function ReviewCreate({
   const [content, setContent] = useState("");
   const [next, setNext] = useState("");
   const [github, setGithub] = useState("");
+  const user = useRecoilValue(userState);
 
-  const userId = "jhj9422";
+  const handlePostReview = () => {
+    console.log(user);
+
+    if (user) {
+      postReview({ userId: user.id, title, content, next, github });
+    }
+
+    setTitle("");
+    setContent("");
+    setNext("");
+    setGithub("");
+
+    setIsModalOpen(false);
+  };
 
   return (
     <ReactModal
@@ -132,9 +148,7 @@ export default function ReviewCreate({
           <div className="flex justify-end mt-auto">
             <button
               className="bg-black text-white py-2 px-4 rounded"
-              onClick={() =>
-                postReview({ userId, title, content, next, github })
-              }
+              onClick={handlePostReview}
             >
               send
             </button>

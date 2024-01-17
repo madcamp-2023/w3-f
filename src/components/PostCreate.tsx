@@ -54,6 +54,12 @@ export default function PostCreate({
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  const handlePost = () => {
+    postPosting({ title, content });
+    setTitle("");
+    setContent("");
+  };
+
   return (
     <ReactModal
       isOpen={isModalOpen}
@@ -96,7 +102,7 @@ export default function PostCreate({
           <div className="flex justify-end mt-auto">
             <button
               className="bg-black text-white py-2 px-4 rounded"
-              onClick={() => postPosting({ title, content })}
+              onClick={handlePost}
             >
               send
             </button>
