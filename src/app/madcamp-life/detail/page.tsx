@@ -117,7 +117,9 @@ export default function MadcampLifeDetailPage() {
 
         <div className="flex justify-end p-8 font-bold text-2xl">
           <div className="flex flex-row justify-center items-center">
-            <LinkButton route="/review" text="몰입캠프 후기 자세히보기" />
+            <LinkButton route="/review">
+              <span className="p-2">몰입캠프 후기 자세히보기</span>{" "}
+            </LinkButton>
             <FaArrowRight size={40} />
           </div>
         </div>
