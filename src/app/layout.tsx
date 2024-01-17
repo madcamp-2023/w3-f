@@ -18,10 +18,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <meta
-        httpEquiv="Content-Security-Policy"
-        content="upgrade-insecure-requests"
-      />
       <body className={inter.className}>
         <link rel="icon" href="/favicon.png" sizes="any" />
         <Providers>
