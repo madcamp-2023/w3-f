@@ -6,6 +6,7 @@ import axios from "axios";
 import { URL } from "@/utils/constants";
 import { useRecoilValue } from "recoil";
 import { userState } from "@/recoil/recoil";
+import Swal from "sweetalert2";
 
 interface ReviewCraeteProps {
   isModalOpen: boolean;
@@ -62,37 +63,61 @@ export default function ReviewDetail({
   const [newGithub, setNewGithub] = useState(github);
 
   const handleDeleteReview = async () => {
-    try {
-      await axios
-        .delete(URL + "/review", {
-          params: { userId: user?.id },
-        })
-        .then(() => {
-          setIsModalOpen(false);
-        });
-    } catch (e: any) {}
+    Swal.fire({
+      title: "후기 삭제를 진행하시겠습니까?",
+      showDenyButton: true,
+      confirmButtonText: "확인",
+      denyButtonText: `취소`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("로그아웃 되었습니다.");
+        try {
+          axios
+            .delete(URL + "/review", {
+              params: { userId: user?.id },
+            })
+            .then(() => {
+              setIsModalOpen(false);
+            });
+        } catch (e: any) {}
+        setIsModalOpen(false);
+      } else if (result.isDenied) {
+      }
+    });
   };
 
   const handlePatchReview = async () => {
-    try {
-      await axios.put(
-        URL + "/review",
-        {
-          name: user?.name,
-          title: newTitle,
-          content: newContent,
-          next: newNext,
-          github: newGithub,
-        },
-        {
-          params: {
-            userId: user?.id,
-          },
+    Swal.fire({
+      title: "후기 수정을 진행하시겠습니까?",
+      showDenyButton: true,
+      confirmButtonText: "확인",
+      denyButtonText: `취소`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("후기가 수정 되었습니다.");
+        try {
+          axios.put(
+            URL + "/review",
+            {
+              name: user?.name,
+              title: newTitle,
+              content: newContent,
+              next: newNext,
+              github: newGithub,
+            },
+            {
+              params: {
+                userId: user?.id,
+              },
+            }
+          );
+        } catch (e: any) {
+          console.log(e);
         }
-      );
-    } catch (e: any) {
-      console.log(e);
-    }
+        setIsModalOpen(false);
+      } else if (result.isDenied) {
+      }
+    });
   };
 
   return (
