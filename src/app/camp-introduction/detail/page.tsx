@@ -1,39 +1,8 @@
 import Layout from "@/components/Layout";
 import LinkButton from "@/components/LinkButton";
+import ItemList from "@/components/shared/ItemList";
 
 import { FaArrowRight } from "react-icons/fa";
-
-const Item = ({ content }: { content: string[] }) => {
-  return (
-    <div className="flex flex-row">
-      <div className="mr-5">
-        {content.map((item, index) => {
-          return (
-            <div key={index} className="block pt-2 text-lg ">
-              {item}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
-
-const Item2 = ({ content }: { content: string[] }) => {
-  return (
-    <div className="flex flex-row">
-      <div className="mr-5">
-        {content.map((item, index) => {
-          return (
-            <div key={index} className="block pt-2 text-lg w-full text-end">
-              {item}
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-};
 
 export default function CampIntroductionDetailPage() {
   const videoId = "DWGAHwzPs0Q"; // YouTube 동영상 ID
@@ -111,7 +80,7 @@ export default function CampIntroductionDetailPage() {
           </div>
           <div className="flex flex-col pl-12 w-full">
             {applicationItemList.map((item, index) => (
-              <Item content={item.content} key={index} />
+              <ItemList content={item.content} key={index} textAligned="left" />
             ))}
           </div>
         </div>
@@ -119,7 +88,11 @@ export default function CampIntroductionDetailPage() {
         <div className="flex flex-row p-12 bg-black text-white ">
           <div className="flex flex-col pr-12 w-full justify-end items-end">
             {applicationItemList1.map((item, index) => (
-              <Item2 content={item.content} key={index} />
+              <ItemList
+                content={item.content}
+                key={index}
+                textAligned="right"
+              />
             ))}
           </div>
           <div className="font-bold border-l border-white text-4xl w-1/6 text-center">
@@ -133,7 +106,7 @@ export default function CampIntroductionDetailPage() {
           </div>
           <div className="flex flex-col pl-12 w-full">
             {applicationItemList2.map((item, index) => (
-              <Item content={item.content} key={index} />
+              <ItemList content={item.content} key={index} textAligned="left" />
             ))}
           </div>
         </div>
