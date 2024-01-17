@@ -11,6 +11,10 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { useRecoilState } from "recoil";
 import { userState } from "@/recoil/recoil";
 import { MdHotelClass } from "react-icons/md";
+import CustomAlert from "./CustomAlert";
+import Swal from "sweetalert2";
+
+const AlertForm = ({ title, text }: { title: string; text: string }) => {};
 
 interface LoginProps {
   isModalOpen: boolean;
@@ -59,6 +63,8 @@ export default function Login({
     setUserId("");
     setPassword("");
     setIsModalOpen(false);
+
+    CustomAlert({ title: "로그인", text: "로그인이 완료되었습니다!" });
   };
 
   const openModal = () => {
@@ -70,18 +76,39 @@ export default function Login({
   };
 
   const handleLogout = () => {
-    setUser(null);
-    setIsModalOpen(false);
+    Swal.fire({
+      title: "로그아웃을 진행하시겠습니까?",
+      showDenyButton: true,
+      confirmButtonText: "확인",
+      denyButtonText: `취소`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("로그아웃 되었습니다.");
+        setUser(null);
+        setIsModalOpen(false);
+      } else if (result.isDenied) {
+      }
+    });
   };
 
   const handleWithdrawal = async () => {
-    setUser(null);
-    setIsModalOpen(false);
-
-    await axios.delete(URL + "/user", {
-      params: {
-        userId: user?.id,
-      },
+    Swal.fire({
+      title: "회원탈퇴를 진행하시겠습니까?",
+      showDenyButton: true,
+      confirmButtonText: "확인",
+      denyButtonText: `취소`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(URL + "/user", {
+          params: {
+            userId: user?.id,
+          },
+        });
+        Swal.fire("회원탈퇴되었습니다.");
+        setUser(null);
+        setIsModalOpen(false);
+      } else if (result.isDenied) {
+      }
     });
   };
 

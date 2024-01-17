@@ -120,7 +120,11 @@ export default function ReviewDetail({
               type="text"
               id="title"
               value={newTitle}
-              onChange={(e) => setNewTitle(e.target.value)}
+              onChange={(e) => {
+                if (user && userId === user.id) {
+                  setNewTitle(e.target.value);
+                }
+              }}
               className="w-full border border-gray-500 p-4 mb-4 rounded-md"
               placeholder={title}
             />
@@ -129,7 +133,11 @@ export default function ReviewDetail({
             <textarea
               id="content"
               value={newContent}
-              onChange={(e) => setNewContent(e.target.value)}
+              onChange={(e) => {
+                if (user && userId === user.id) {
+                  setNewContent(e.target.value);
+                }
+              }}
               className="w-full border h-44 p-4 border-gray-500  mb-4 rounded-md"
               placeholder="몰입 캠프를 함께한 후기를 적어주세요."
             />
@@ -138,7 +146,11 @@ export default function ReviewDetail({
             <textarea
               id="next"
               value={newNext}
-              onChange={(e) => setNewNext(e.target.value)}
+              onChange={(e) => {
+                if (user && userId === user.id) {
+                  setNewNext(e.target.value);
+                }
+              }}
               className="w-full border h-44 p-4 border-gray-500  mb-4 rounded-md"
               placeholder="다음 기수에게 해주고 싶은 말을 적어주세요."
             />
@@ -148,7 +160,11 @@ export default function ReviewDetail({
               type="text"
               id="github"
               value={newGithub}
-              onChange={(e) => setNewGithub(e.target.value)}
+              onChange={(e) => {
+                if (user && userId === user.id) {
+                  setNewGithub(e.target.value);
+                }
+              }}
               className="w-full border p-4 border-gray-500  mb-4 rounded-md"
               placeholder="소개하고 싶은 Github URL을 적어주세요."
             />

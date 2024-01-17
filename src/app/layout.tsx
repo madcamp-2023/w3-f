@@ -24,8 +24,7 @@ export default function RootLayout({
           <AnimatedCursor
             innerSize={25}
             outerSize={50}
-            color="255, 0, 0"
-            outerStyle={{ color: "black" }}
+            color="96, 96, 96"
             outerAlpha={0.1}
             innerScale={0.7}
             outerScale={1.5}

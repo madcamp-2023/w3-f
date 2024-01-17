@@ -6,6 +6,7 @@ import axios from "axios";
 import { URL } from "@/utils/constants";
 import { useRecoilValue } from "recoil";
 import { userState } from "@/recoil/recoil";
+import CustomAlert from "./CustomAlert";
 
 interface ReviewCraeteProps {
   isModalOpen: boolean;
@@ -83,6 +84,8 @@ export default function ReviewCreate({
     setContent("");
     setNext("");
     setGithub("");
+
+    CustomAlert({ title: "후기", text: "후기 작성이 완료되었습니다." });
 
     setIsModalOpen(false);
   };

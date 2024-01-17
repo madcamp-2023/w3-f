@@ -3,6 +3,7 @@ import { IoIosCloseCircle } from "react-icons/io";
 import ReactModal from "react-modal";
 import axios from "axios";
 import { URL } from "@/utils/constants";
+import CustomAlert from "./CustomAlert";
 
 interface ReviewCraeteProps {
   isModalOpen: boolean;
@@ -58,6 +59,9 @@ export default function PostCreate({
     postPosting({ title, content });
     setTitle("");
     setContent("");
+
+    CustomAlert({ title: "게시판", text: "게시판을 작성하였습니다." });
+    setIsModalOpen(false);
   };
 
   return (

@@ -120,7 +120,7 @@ export default function Post() {
             />
           )}
 
-          {user && user.name === "admin" && (
+          {user && user.name === "관리자" && (
             <section className="flex justify-end mt-10 mr-10 items-end h-full">
               <BiSolidEditLocation
                 size={80}

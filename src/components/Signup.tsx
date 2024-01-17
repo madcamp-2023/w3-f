@@ -11,6 +11,7 @@ import { FaLock } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
 import { MdOutlinePassword } from "react-icons/md";
 import { MdOutlinePermIdentity } from "react-icons/md";
+import CustomAlert from "./CustomAlert";
 
 interface SignupProps {
   isModalOpen: boolean;
@@ -61,6 +62,8 @@ export default function Signup({
     setCode("");
 
     openLoginModal();
+
+    CustomAlert({ title: "회원가입", text: "회원가입이 완료되었습니다!" });
   };
 
   const openModal = () => {
