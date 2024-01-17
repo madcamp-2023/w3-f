@@ -49,7 +49,7 @@ export default function Header() {
       <menu className="flex flex-row">
         <nav className="hidden md:flex">
           <Button onClick={() => router.push("/FAQ")}>FAQ</Button>
-          <Button onClick={() => router.push("/notice")}>게시판</Button>
+          <Button onClick={() => router.push("/post")}>게시판</Button>
           <button
             onClick={() => router.push("/apply/detail")}
             className="mr-4 border border-black rounded-2xl bg-black text-white p-2 pl-4 pr-4"

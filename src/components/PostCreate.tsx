@@ -9,27 +9,15 @@ interface ReviewCraeteProps {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-interface postReviewProps {
-  userId: string;
+interface postPostingProps {
   title: string;
   content: string;
-  next: string;
-  github: string;
 }
 
-const postReview = async ({
-  userId,
-  title,
-  content,
-  next,
-  github,
-}: postReviewProps) => {
+const postPosting = async ({ title, content }: postPostingProps) => {
   await axios.post(URL + "/post", {
-    userId: userId,
     title: title,
     content: content,
-    next: next,
-    github: github,
   });
 };
 
@@ -65,10 +53,6 @@ export default function PostCreate({
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [next, setNext] = useState("");
-  const [github, setGithub] = useState("");
-
-  const userId = "jhj9422";
 
   return (
     <ReactModal
@@ -80,7 +64,7 @@ export default function PostCreate({
       <div className="flex flex-col">
         <div className="flex flex-row w-full">
           <div className="flex w-full justify-start items-center font-bold text-2xl ml-8">
-            몰입생활후기적기
+            게시판 작성
           </div>
           <div className="flex w-full justify-end items-center">
             <button onClick={() => setIsModalOpen(false)}>
@@ -96,7 +80,7 @@ export default function PostCreate({
               id="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full border border-gray-500 p-4 mb-4 rounded-md"
+              className="w-full border h-20 border-gray-500 p-4 mb-4 rounded-md"
               placeholder="제목을 적어주세요."
             />
           </div>
@@ -105,35 +89,14 @@ export default function PostCreate({
               id="content"
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="w-full border h-44 p-4 border-gray-500  mb-4 rounded-md"
-              placeholder="몰입 캠프를 함께한 후기를 적어주세요."
-            />
-          </div>
-          <div>
-            <textarea
-              id="next"
-              value={next}
-              onChange={(e) => setNext(e.target.value)}
-              className="w-full border h-44 p-4 border-gray-500  mb-4 rounded-md"
-              placeholder="다음 기수에게 해주고 싶은 말을 적어주세요."
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              id="github"
-              value={github}
-              onChange={(e) => setGithub(e.target.value)}
-              className="w-full border p-4 border-gray-500  mb-4 rounded-md"
-              placeholder="소개하고 싶은 Github URL을 적어주세요."
+              className="w-full border h-80 p-4 border-gray-500  mb-4 rounded-md"
+              placeholder="공지사항을 적어주세요."
             />
           </div>
           <div className="flex justify-end mt-auto">
             <button
               className="bg-black text-white py-2 px-4 rounded"
-              onClick={() =>
-                postReview({ userId, title, content, next, github })
-              }
+              onClick={() => postPosting({ title, content })}
             >
               send
             </button>

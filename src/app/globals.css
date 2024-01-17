@@ -166,9 +166,14 @@ body {
 
 .rotate-translate2 {
   /* Adjust the width and height as needed */
-  width: 100vw;
   /* Create a background with a linear-gradient and set the angle */
-  background: linear-gradient(-4.962deg, #fff 50%, #000 50%);
+  background: linear-gradient(-4.962deg, #000 50%, #fff 50%);
 
   z-index: 0;
+}
+
+.black-bg {
+  width: 100vw;
+  height: 60vh;
+  background: linear-gradient(0deg, #000 50%, #fff 50%);
 }

@@ -2,13 +2,15 @@
 
 import React, { Dispatch, SetStateAction, useState } from "react";
 import axios from "axios";
-import { MADCAMP, URL } from "@/utils/constants";
+import { URL } from "@/utils/constants";
 import InputForm from "./InputForm";
 import LoginModal from "./LoginModal";
 import { IoMdPerson } from "react-icons/io";
 import { FaLock } from "react-icons/fa";
 import { IoIosCloseCircle } from "react-icons/io";
-import { IoPersonCircle } from "react-icons/io5";
+import { useRecoilState } from "recoil";
+import { userState } from "@/recoil/recoil";
+import { MdHotelClass } from "react-icons/md";
 
 interface LoginProps {
   isModalOpen: boolean;
@@ -44,6 +46,8 @@ export default function Login({
   const [userId, setUserId] = useState("");
   const [password, setPassword] = useState("");
 
+  const [user, setUser] = useRecoilState(userState);
+
   const handleSubmit = async (event: React.MouseEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -63,6 +67,11 @@ export default function Login({
     setIsModalOpen(false);
   };
 
+  const handleLogout = () => {
+    setUser(null);
+    setIsModalOpen(false);
+  };
+
   return (
     <>
       <LoginModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
@@ -73,38 +82,71 @@ export default function Login({
                 <IoIosCloseCircle size={30} />
               </button>
             </div>
-            <h1 className="text-2xl p-4 font-bold">User Login</h1>
+            {user ? (
+              <>
+                <h1 className="text-2xl p-4 font-bold">정보</h1>
 
-            <form onSubmit={handleSubmit}>
-              <InputForm
-                icon={<IoMdPerson />}
-                text="ID"
-                type="id"
-                id="id"
-                value={userId}
-                onChange={setUserId}
-              />
-              <InputForm
-                icon={<FaLock />}
-                text="password"
-                type="password"
-                id="password"
-                value={password}
-                onChange={setPassword}
-              />
-              <button
-                type="submit"
-                className="w-60 bg-black text-white p-2 m-2 rounded-md"
-              >
-                로그인
-              </button>
-            </form>
-            <button
-              className="mt-auto hover:font-bold text-sm"
-              onClick={openSignupModal}
-            >
-              Create Your Account
-            </button>
+                <div className="flex flex-row justify-center items-center w-60 bg-lightGray rounded-md p-2 m-2">
+                  <MdHotelClass size={30} />
+                  <div className="w-full bg-lightGray rounded-md ml-2 font-bold text-red-500">
+                    {user.id === "admin" ? "관리자" : "몰디"}
+                  </div>
+                </div>
+                <div className="flex flex-row justify-center items-center w-60 bg-lightGray rounded-md p-2 m-2">
+                  <IoMdPerson size={30} />
+                  <div className="w-full bg-lightGray rounded-md ml-2 ">
+                    {user.name}
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="w-60 bg-black text-white p-2 m-2 rounded-md"
+                  onClick={handleLogout}
+                >
+                  로그아웃
+                </button>
+                <button
+                  className="mt-auto hover:font-bold text-sm"
+                  onClick={openSignupModal}
+                >
+                  Create Your Account
+                </button>
+              </>
+            ) : (
+              <>
+                <h1 className="text-2xl p-4 font-bold">User Login</h1>
+                <form onSubmit={handleSubmit}>
+                  <InputForm
+                    icon={<IoMdPerson />}
+                    text="ID"
+                    type="id"
+                    id="id"
+                    value={userId}
+                    onChange={setUserId}
+                  />
+                  <InputForm
+                    icon={<FaLock />}
+                    text="password"
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={setPassword}
+                  />
+                  <button
+                    type="submit"
+                    className="w-60 bg-black text-white p-2 m-2 rounded-md"
+                  >
+                    로그인
+                  </button>
+                </form>
+                <button
+                  className="mt-auto hover:font-bold text-sm"
+                  onClick={openSignupModal}
+                >
+                  Create Your Account
+                </button>
+              </>
+            )}
           </div>
         </div>
       </LoginModal>

@@ -5,6 +5,10 @@ import axios from "axios";
 import React, { useEffect, useMemo, useState } from "react";
 import { Column } from "react-table";
 import TableSheet from "./TableSheet";
+import PostCreate from "./PostCreate";
+import { BiSolidEditLocation } from "react-icons/bi";
+import { useRecoilValue } from "recoil";
+import { userState } from "@/recoil/recoil";
 
 interface PostItem {
   number: number;
@@ -23,9 +27,28 @@ async function getPostList({ page }: { page: number }) {
   ).data;
 }
 
+const Item = ({ text }: { text: string }) => {
+  const applicationDetailsArray = text.split("\n");
+
+  return (
+    <div className="flex flex-row">
+      <div className="mr-5">
+        {applicationDetailsArray.map((item, index) => {
+          return (
+            <div key={index} className="block pt-4 text-lg ">
+              {item}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
 export default function Post() {
   const [noticeNumber, setNoticeNumber] = useState<number>(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [postList, setPostList] = useState<PostItem[] | null>([
     {
       number: 0,
@@ -109,10 +132,10 @@ export default function Post() {
 
   useEffect(() => {
     //TODO : TEST POST
-    getPostList({ page: currentPage }).then((response) => {
-      console.log(response);
-      // setPostList(response);
-    });
+    // getPostList({ page: currentPage }).then((response) => {
+    //   console.log(response);
+    //   // setPostList(response);
+    // });
   }, [currentPage]);
 
   const columns: Column[] = useMemo(
@@ -135,6 +158,8 @@ export default function Post() {
 
   const data = useMemo(() => postList, [postList]);
 
+  const user = useRecoilValue(userState);
+
   return (
     <div
       className="flex flex-col w-full justify-between"
@@ -150,6 +175,21 @@ export default function Post() {
             data={data}
             handleNoticeNumber={handleNoticeNumber}
           />
+
+          {user && user.name === "admin" && (
+            <section className="flex justify-end mt-10 mr-10 items-end h-full">
+              <BiSolidEditLocation
+                size={80}
+                onClick={() => setIsModalOpen(true)}
+              />
+              {isModalOpen && (
+                <PostCreate
+                  isModalOpen={isModalOpen}
+                  setIsModalOpen={setIsModalOpen}
+                />
+              )}
+            </section>
+          )}
           <section className="mt-auto flex justify-center items-center">
             {Array.from({ length: MAX_PAGES }, (_, index) => index + 1).map(
               (pageNumber) => (
@@ -171,7 +211,9 @@ export default function Post() {
           <div className="text-3xl mb-4">
             {postList && postList[noticeNumber]?.title}
           </div>
-          <div>{postList && postList[noticeNumber]?.content}</div>
+          <div>
+            {postList && <Item text={postList[noticeNumber]?.content} />}
+          </div>
         </div>
       </div>
     </div>
